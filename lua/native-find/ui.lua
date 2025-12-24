@@ -19,9 +19,9 @@ local function create_float_win(buf, config)
 end
 
 -- Calculate window dimensions
-local function get_window_config()
-	local width = math.floor(vim.o.columns * 0.8)
-	local height = math.floor(vim.o.lines * 0.8)
+local function get_window_config(opts)
+	local width = math.floor(vim.o.columns * opts.width)
+	local height = math.floor(vim.o.lines * opts.height)
 	local row = math.floor((vim.o.lines - height) / 2)
 	local col = math.floor((vim.o.columns - width) / 2)
 
@@ -42,8 +42,8 @@ local function get_window_config()
 end
 
 -- Create the UI
-function M.create()
-	local config = get_window_config()
+function M.create(opts)
+	local config = get_window_config(opts)
 
 	-- Create buffers
 	M.state.prompt_buf = vim.api.nvim_create_buf(false, true)

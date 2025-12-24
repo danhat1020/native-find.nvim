@@ -267,7 +267,7 @@ function M.start(opts)
 	state.filtered_results = state.results
 
 	-- Create UI
-	ui.create()
+	ui.create(opts.config)
 
 	-- Setup keymaps
 	setup_keymaps()
